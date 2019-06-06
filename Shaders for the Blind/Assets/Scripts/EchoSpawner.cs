@@ -8,17 +8,15 @@ public class EchoSpawner : MonoBehaviour
     public EchoTrigger sourcePrefab;
     EchoTrigger lastSource;
 
-    public void FixedUpdate()
+    public void Update()
     {
-        if(Input.anyKeyDown)
-        {
+        if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) || Input.GetKeyDown(KeyCode.Space))
             SpawnSource();
-        }
     }
 
-    void SpawnSource()
+    public void SpawnSource()
     {
-        if(lastSource != null)
+        if (lastSource != null)
             Destroy(lastSource.gameObject);
 
         lastSource = Instantiate(sourcePrefab, transform.position, Quaternion.identity);
