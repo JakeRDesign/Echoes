@@ -11,9 +11,6 @@ public class Player : MonoBehaviour
 
     public Transform headTransform;
 
-    bool isSwiping = false;
-    Vector2 swipeStart;
-
     CharacterController controller;
 
     private void Awake()
@@ -32,23 +29,7 @@ public class Player : MonoBehaviour
             if (OVRInput.Get(OVRInput.Touch.PrimaryTouchpad))
             {
                 Vector2 touchPad = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad);
-                if (!isSwiping)
-                {
-                    isSwiping = true;
-                    swipeStart = touchPad;
-                }
-                else
-                {
-                    Vector2 dif = touchPad - swipeStart;
-                    if (dif.sqrMagnitude > 0.001f)
-                    {
-                        moveInput = new Vector3(dif.x, 0.0f, dif.y);
-                    }
-                }
-            }
-            else
-            {
-                isSwiping = false;
+                moveInput = new Vector3(touchPad.x, 0.0f, touchPad.y);
             }
         }
         else
