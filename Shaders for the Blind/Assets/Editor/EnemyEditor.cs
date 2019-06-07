@@ -12,6 +12,24 @@ public class EnemyEditor : Editor
         if (e == null)
             return;
 
+        // draw view cone
+        Vector3 pos = e.transform.position;
+        float ang = e.transform.rotation.eulerAngles.y * Mathf.Deg2Rad;
+
+        Handles.color = new Color(1.0f, 0.0f, 0.0f, 0.1f);
+        Vector3 leftBound = new Vector3(Mathf.Sin(ang - e.viewCone), 0.0f, Mathf.Cos(ang - e.viewCone));
+        Handles.DrawSolidArc(pos, Vector3.up, leftBound, e.viewCone*Mathf.Rad2Deg*2.0f, e.viewDistance);
+
+        Vector3 rightBound = new Vector3(Mathf.Sin(ang + e.viewCone), 0.0f, Mathf.Cos(ang + e.viewCone));
+        //Vector3 leftBound = new Vector3(Mathf.Sin(ang - e.viewCone), 0.0f, Mathf.Cos(ang - e.viewCone));
+
+        Vector3 endLeft = pos + (leftBound * e.viewDistance);
+        Vector3 endRight = pos + (rightBound * e.viewDistance);
+
+        Handles.color = Color.red;
+        Handles.DrawLine(pos, endLeft);
+        Handles.DrawLine(pos, endRight);
+
         if (e.pathPoints.Count == 0)
             return;
 
@@ -26,6 +44,7 @@ public class EnemyEditor : Editor
             lastPos = pt.position;
             e.pathPoints[i] = pt;
         }
-        Handles.DrawLine(lastPos, e.pathPoints[0].position);
+        if (e.pathLoops)
+            Handles.DrawLine(lastPos, e.pathPoints[0].position);
     }
 }

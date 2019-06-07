@@ -10,6 +10,7 @@ public enum MoveMode
     COUNT
 }
 
+[RequireComponent(typeof(CharacterController))]
 public class Player : MonoBehaviour
 {
 
@@ -22,9 +23,12 @@ public class Player : MonoBehaviour
     bool isSwiping = false;
     Vector2 swipeStart;
 
+    CharacterController controller;
+
     private void Awake()
     {
         goController.gameObject.SetActive(Application.isMobilePlatform);
+        controller = GetComponent<CharacterController>();
     }
 
     private void Update()
@@ -88,7 +92,8 @@ public class Player : MonoBehaviour
         movement += moveInput.z * fwd;
 
         float mspd = moveMode == MoveMode.JOYSTICK ? moveSpeed * 0.1f : moveSpeed;
-        transform.position += movement * mspd * Time.deltaTime;
+        //transform.position += movement * mspd * Time.deltaTime;
+        controller.SimpleMove(movement * mspd * Time.deltaTime);
     }
 
 }
