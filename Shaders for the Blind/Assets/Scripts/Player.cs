@@ -2,21 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum MoveMode
-{
-    DRAG = 0,
-    JOYSTICK,
-
-    COUNT
-}
-
 [RequireComponent(typeof(CharacterController))]
 public class Player : MonoBehaviour
 {
 
     public float moveSpeed = 100.0f;
     public Transform goController;
-    public MoveMode moveMode;
 
     public Transform headTransform;
 
@@ -38,12 +29,6 @@ public class Player : MonoBehaviour
         // use touchpad on android
         if (Application.isMobilePlatform)
         {
-            if(OVRInput.Get(OVRInput.Button.Back))
-            {
-                moveMode = (MoveMode)(((int)moveMode + 1) % (int)MoveMode.COUNT);
-                FindObjectOfType<EchoSpawner>().SpawnSource();
-            }
-
             if (OVRInput.Get(OVRInput.Touch.PrimaryTouchpad))
             {
                 Vector2 touchPad = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad);
@@ -54,14 +39,10 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
-                    Vector2 dif = swipeStart - touchPad;
-                    if (moveMode == MoveMode.JOYSTICK)
-                        dif = touchPad - swipeStart;
+                    Vector2 dif = touchPad - swipeStart;
                     if (dif.sqrMagnitude > 0.001f)
                     {
                         moveInput = new Vector3(dif.x, 0.0f, dif.y);
-                        if (moveMode == MoveMode.DRAG)
-                            swipeStart = touchPad;
                     }
                 }
             }
@@ -91,9 +72,7 @@ public class Player : MonoBehaviour
         movement += moveInput.x * rgt;
         movement += moveInput.z * fwd;
 
-        float mspd = moveMode == MoveMode.JOYSTICK ? moveSpeed * 0.1f : moveSpeed;
-        //transform.position += movement * mspd * Time.deltaTime;
-        controller.SimpleMove(movement * mspd * Time.deltaTime);
+        controller.SimpleMove(movement * moveSpeed * Time.deltaTime);
     }
 
 }

@@ -123,9 +123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71673f60c2561044183ef58fa8696ff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2000
+  moveSpeed: 100
   goController: {fileID: 9074489303061094174}
-  moveMode: 1
   headTransform: {fileID: 9074489303569669817}
 --- !u!143 &9074489303683204347
 CharacterController:
