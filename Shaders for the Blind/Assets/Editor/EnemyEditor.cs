@@ -16,16 +16,21 @@ public class EnemyEditor : Editor
         Vector3 pos = e.transform.position;
         float ang = e.transform.rotation.eulerAngles.y * Mathf.Deg2Rad;
 
+        // faint red for the inside of the arc
         Handles.color = new Color(1.0f, 0.0f, 0.0f, 0.1f);
+
+        // get direction for left and right sides of the arc
         Vector3 leftBound = new Vector3(Mathf.Sin(ang - e.viewCone), 0.0f, Mathf.Cos(ang - e.viewCone));
-        Handles.DrawSolidArc(pos, Vector3.up, leftBound, e.viewCone*Mathf.Rad2Deg*2.0f, e.viewDistance);
-
         Vector3 rightBound = new Vector3(Mathf.Sin(ang + e.viewCone), 0.0f, Mathf.Cos(ang + e.viewCone));
-        //Vector3 leftBound = new Vector3(Mathf.Sin(ang - e.viewCone), 0.0f, Mathf.Cos(ang - e.viewCone));
 
+        // draw inside of the arc
+        Handles.DrawSolidArc(pos, Vector3.up, leftBound, e.viewCone * Mathf.Rad2Deg * 2.0f, e.viewDistance);
+
+        // get end positions of each side of the arc
         Vector3 endLeft = pos + (leftBound * e.viewDistance);
         Vector3 endRight = pos + (rightBound * e.viewDistance);
 
+        // draw those lines
         Handles.color = Color.red;
         Handles.DrawLine(pos, endLeft);
         Handles.DrawLine(pos, endRight);

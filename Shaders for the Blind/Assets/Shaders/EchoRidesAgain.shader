@@ -16,8 +16,8 @@ Shader "Custom/EchoRidesAgain"
 				#include "UnityCG.cginc"
 
 				float4 _Color;
-					uniform float4 _EchoCenter = float4(0,0,0,0);
-					uniform float _EchoRadius = 2.0;
+				uniform float4 _EchoCenter = float4(0,0,0,0);
+				uniform float _EchoRadius = 2.0;
 
 					struct v2f {
 						float4 pos : SV_POSITION;
