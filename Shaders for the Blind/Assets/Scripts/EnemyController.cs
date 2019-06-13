@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 [System.Serializable]
 public struct PathPoint
@@ -19,6 +20,7 @@ public class EnemyController : MonoBehaviour
     [Range(0.0f, Mathf.PI)]
     public float viewCone = 0.1f;
     public float viewDistance = 5.0f;
+    private float halfHeight = 1.0f;
 
     int pathIndex = 0;
     float pauseTimer = 0.0f;
@@ -27,18 +29,26 @@ public class EnemyController : MonoBehaviour
 
     Player target;
 
+    NavMeshPath path;
+
     private void Awake()
     {
         target = FindObjectOfType<Player>();
+        path = new NavMeshPath();
     }
 
     private void FixedUpdate()
     {
-        DoMovement();
 
         transform.localScale = Vector3.one;
         if (CanSeePlayer())
+        {
             transform.localScale *= Mathf.Abs(Mathf.Sin(Time.time * 10.0f)) + 1.0f;
+        }
+        else
+        {
+            DoMovement();
+        }
     }
 
     bool CanSeePlayer()
@@ -74,7 +84,15 @@ public class EnemyController : MonoBehaviour
 
         PathPoint thisPoint = pathPoints[pathIndex];
 
-        Vector3 difference = thisPoint.position - transform.position;
+        Vector3 movePoint = thisPoint.position;
+
+        if (NavMesh.CalculatePath(transform.position, thisPoint.position, ~0, path))
+        {
+            if (path.corners.Length > 1)
+                movePoint = path.corners[1] + (Vector3.up * halfHeight);
+        }
+
+        Vector3 difference = movePoint - transform.position;
         float mag = difference.magnitude;
 
         if (mag < 0.1f)
@@ -99,7 +117,25 @@ public class EnemyController : MonoBehaviour
             return;
         }
 
-        if (!(difference.sqrMagnitude < 1.0f && thisPoint.pauseTime > 0.0f))
+        MoveTowards(movePoint, thisPoint.pauseTime > 0.0f);
+
+    }
+
+    public float GetAngleToPlayer()
+    {
+        Vector3 dif = (target.transform.position - transform.position).normalized;
+        Vector3 dir = transform.forward;
+        float dot = Vector3.Dot(dif, dir);
+
+        return Mathf.Acos(dot);
+    }
+
+    void MoveTowards(Vector3 point, bool normalize = false)
+    {
+        Vector3 difference = point - transform.position;
+        float mag = difference.magnitude;
+
+        if (!(difference.sqrMagnitude < 1.0f && normalize))
             difference.Normalize();
 
         Vector3 movement = difference * moveSpeed * Time.fixedDeltaTime;
@@ -115,15 +151,6 @@ public class EnemyController : MonoBehaviour
         Quaternion targetAng = Quaternion.Euler(0.0f, ang, 0.0f);
         // smoothly rotate between em
         transform.rotation = Quaternion.Lerp(transform.rotation, targetAng, Time.fixedDeltaTime * 5.0f * moveSpeed);
-    }
-
-    public float GetAngleToPlayer()
-    {
-        Vector3 dif = (target.transform.position - transform.position).normalized;
-        Vector3 dir = transform.forward;
-        float dot = Vector3.Dot(dif, dir);
-
-        return Mathf.Acos(dot);
     }
 
 
