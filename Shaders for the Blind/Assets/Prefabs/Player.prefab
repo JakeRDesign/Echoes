@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 201547366}
   - component: {fileID: 201547367}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Breathing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1038889192}
   - component: {fileID: 1038889193}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Footsteps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +264,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1863703774}
   - component: {fileID: 1863703775}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Panicked Breathing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -397,7 +397,7 @@ GameObject:
   - component: {fileID: 9074489303683204325}
   - component: {fileID: 9074489303683204347}
   - component: {fileID: 9074489303683204346}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -515,6 +515,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 47b0e2457ce9f884aa30e36bae825539, type: 3}
   - {fileID: 8300000, guid: ec2fafd285bede04585a111355152e2e, type: 3}
   footstepSource: {fileID: 1038889193}
+  bloodPrefabs:
+  - {fileID: 8395201919068258581, guid: 48c8e42f7c8b5cf4498608f5323fea4d, type: 3}
+  - {fileID: 5138544161678490132, guid: 58d339a5f2371e44686a81ae39c45885, type: 3}
+  - {fileID: 8521231952053908674, guid: db46be14ef4968b42bc6e0271007aea9, type: 3}
+  - {fileID: 1447873094795848885, guid: c643a62a06bb60a4a80c0fe7789aef2a, type: 3}
+  trailDistance: 1
+  lastTrail: {x: 0, y: 0, z: 0}
 --- !u!143 &9074489303683204347
 CharacterController:
   m_ObjectHideFlags: 0
@@ -559,6 +566,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: e0f1914fdbfd3764faeff5474c0cbe1e, type: 3}
       propertyPath: m_Name
       value: OculusGoController
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e0f1914fdbfd3764faeff5474c0cbe1e, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e0f1914fdbfd3764faeff5474c0cbe1e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -623,6 +634,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OVRCameraRig
       objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -667,6 +682,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 2037080, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_BackGroundColor.r
       value: 0
@@ -678,6 +697,34 @@ PrefabInstance:
     - target: {fileID: 2037080, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_BackGroundColor.b
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 113768, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 159718, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1054112583220142, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 109308, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 168682, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 20000010189485334, guid: 126d619cf4daa52469682f85c1378b4a,
         type: 3}
@@ -708,6 +755,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_BackGroundColor.b
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1983321904398200, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}

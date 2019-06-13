@@ -19,12 +19,19 @@ public class Player : MonoBehaviour
     private float footstepCounter = 0.0f;
     private int footstepIndex = 0;
 
+    [Header("Blood Trails")]
+    public List<GameObject> bloodPrefabs;
+    public float trailDistance = 0.3f;
+    public Vector3 lastTrail;
+
     CharacterController controller;
 
     private void Awake()
     {
         goController.gameObject.SetActive(Application.isMobilePlatform);
         controller = GetComponent<CharacterController>();
+
+        lastTrail = transform.position;
     }
 
     private void Update()
@@ -57,6 +64,15 @@ public class Player : MonoBehaviour
 
                 footstepIndex = (footstepIndex + 1) % footstepSounds.Count;
             }
+        }
+
+        if(Vector3.Distance(lastTrail, transform.position) >= trailDistance)
+        {
+            // choose random prefab
+            GameObject toSpawn = bloodPrefabs[Random.Range(0, bloodPrefabs.Count)];
+            GameObject newTrail = Instantiate(toSpawn, transform.position - (Vector3.up*1.3f), transform.rotation);
+
+            lastTrail = transform.position;
         }
 
         // get direction head is facing
