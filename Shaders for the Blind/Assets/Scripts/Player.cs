@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
 public class Player : MonoBehaviour
@@ -52,11 +53,11 @@ public class Player : MonoBehaviour
             moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
         }
 
-        if(moveInput.sqrMagnitude > 0.0f)
+        if (moveInput.sqrMagnitude > 0.0f)
         {
             footstepCounter += Time.deltaTime;
 
-            while(footstepCounter > footstepInterval)
+            while (footstepCounter > footstepInterval)
             {
                 footstepCounter -= footstepInterval;
 
@@ -66,11 +67,11 @@ public class Player : MonoBehaviour
             }
         }
 
-        if(Vector3.Distance(lastTrail, transform.position) >= trailDistance)
+        if (Vector3.Distance(lastTrail, transform.position) >= trailDistance)
         {
             // choose random prefab
             GameObject toSpawn = bloodPrefabs[Random.Range(0, bloodPrefabs.Count)];
-            GameObject newTrail = Instantiate(toSpawn, transform.position - (Vector3.up*1.3f), transform.rotation);
+            GameObject newTrail = Instantiate(toSpawn, transform.position - (Vector3.up * 1.3f), transform.rotation);
 
             lastTrail = transform.position;
         }
@@ -92,6 +93,16 @@ public class Player : MonoBehaviour
         movement += moveInput.z * fwd;
 
         controller.SimpleMove(movement * moveSpeed * Time.deltaTime);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
     }
 
 }

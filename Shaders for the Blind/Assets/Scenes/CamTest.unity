@@ -38,13 +38,13 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -1906,9 +1906,10 @@ GameObject:
   - component: {fileID: 181414090}
   - component: {fileID: 181414089}
   - component: {fileID: 181414093}
+  - component: {fileID: 181414094}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2026,6 +2027,22 @@ MonoBehaviour:
   viewCone: 0.6
   viewDistance: 10
   alertTime: 2
+--- !u!54 &181414094
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181414088}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &196147943
 GameObject:
   m_ObjectHideFlags: 0
@@ -7012,9 +7029,10 @@ GameObject:
   - component: {fileID: 683710145}
   - component: {fileID: 683710144}
   - component: {fileID: 683710148}
+  - component: {fileID: 683710149}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7126,6 +7144,22 @@ MonoBehaviour:
   viewCone: 0.6
   viewDistance: 19.57
   alertTime: 2
+--- !u!54 &683710149
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683710143}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &683768101
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11944,7 +11978,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1c06f07ceeec099459edf0800660c34c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15864,7 +15898,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1c06f07ceeec099459edf0800660c34c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -16665,7 +16699,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1c06f07ceeec099459edf0800660c34c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -17077,9 +17111,10 @@ GameObject:
   - component: {fileID: 1620063784}
   - component: {fileID: 1620063783}
   - component: {fileID: 1620063787}
+  - component: {fileID: 1620063788}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17185,6 +17220,22 @@ MonoBehaviour:
   viewCone: 0.6
   viewDistance: 14.73
   alertTime: 2
+--- !u!54 &1620063788
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620063782}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1626253394
 GameObject:
   m_ObjectHideFlags: 0
@@ -19025,7 +19076,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1c06f07ceeec099459edf0800660c34c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19854,7 +19905,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1c06f07ceeec099459edf0800660c34c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -20379,9 +20430,10 @@ GameObject:
   - component: {fileID: 1860920872}
   - component: {fileID: 1860920871}
   - component: {fileID: 1860920875}
+  - component: {fileID: 1860920876}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20487,6 +20539,22 @@ MonoBehaviour:
   viewCone: 0.62
   viewDistance: 9.15
   alertTime: 2
+--- !u!54 &1860920876
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860920870}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1871874092
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21327,9 +21395,10 @@ GameObject:
   - component: {fileID: 1950564059}
   - component: {fileID: 1950564058}
   - component: {fileID: 1950564062}
+  - component: {fileID: 1950564063}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21422,7 +21491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathPoints:
-  - position: {x: -40, y: 2.56, z: 26.038973}
+  - position: {x: -39.87, y: 2.56, z: 26.038973}
     pauseTime: 2
   - position: {x: -39.953423, y: 2.56, z: 20.672415}
     pauseTime: 0
@@ -21437,6 +21506,22 @@ MonoBehaviour:
   viewCone: 0.6
   viewDistance: 12.84
   alertTime: 2
+--- !u!54 &1950564063
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950564057}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1951061372
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23949,10 +24034,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 9074489303683204322, guid: 337d55b875df22e4baf1dd8995002e7d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9074489303683204344, guid: 337d55b875df22e4baf1dd8995002e7d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -41.6
+      value: -41.68
       objectReference: {fileID: 0}
     - target: {fileID: 9074489303683204344, guid: 337d55b875df22e4baf1dd8995002e7d,
         type: 3}
@@ -23962,7 +24052,7 @@ PrefabInstance:
     - target: {fileID: 9074489303683204344, guid: 337d55b875df22e4baf1dd8995002e7d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -17.175
+      value: -16.87
       objectReference: {fileID: 0}
     - target: {fileID: 9074489303683204344, guid: 337d55b875df22e4baf1dd8995002e7d,
         type: 3}
@@ -24002,6 +24092,73 @@ PrefabInstance:
     - target: {fileID: 9074489303683204344, guid: 337d55b875df22e4baf1dd8995002e7d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9074489303061381950, guid: 337d55b875df22e4baf1dd8995002e7d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9074489303569891993, guid: 337d55b875df22e4baf1dd8995002e7d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9074489303569891999, guid: 337d55b875df22e4baf1dd8995002e7d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9074489303569951709, guid: 337d55b875df22e4baf1dd8995002e7d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9074489303569905747, guid: 337d55b875df22e4baf1dd8995002e7d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9073822258472910741, guid: 337d55b875df22e4baf1dd8995002e7d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9074489303569891995, guid: 337d55b875df22e4baf1dd8995002e7d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9074489303569891997, guid: 337d55b875df22e4baf1dd8995002e7d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9074489303569962705, guid: 337d55b875df22e4baf1dd8995002e7d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9074489303569903303, guid: 337d55b875df22e4baf1dd8995002e7d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9072505999801858883, guid: 337d55b875df22e4baf1dd8995002e7d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1038889191, guid: 337d55b875df22e4baf1dd8995002e7d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 201547365, guid: 337d55b875df22e4baf1dd8995002e7d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863703773, guid: 337d55b875df22e4baf1dd8995002e7d, type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
