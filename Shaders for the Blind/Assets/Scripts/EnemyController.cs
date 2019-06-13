@@ -25,6 +25,11 @@ public class EnemyController : MonoBehaviour
     int pathIndex = 0;
     float pauseTimer = 0.0f;
 
+    bool sawPlayer = false;
+    [Header("Time before it starts persuing the player")]
+    public float alertTime = 2.0f;
+    float seePause = 0.0f;
+
     int increment = 1;
 
     Player target;
@@ -43,16 +48,43 @@ public class EnemyController : MonoBehaviour
         transform.localScale = Vector3.one;
         if (CanSeePlayer())
         {
-            transform.localScale *= Mathf.Abs(Mathf.Sin(Time.time * 10.0f)) + 1.0f;
+            if (sawPlayer)
+            {
+                seePause -= Time.fixedDeltaTime;
+                if (seePause < 0)
+                {
+                    // find player
+                    Vector3 movePoint = transform.position;
+
+                    if (NavMesh.CalculatePath(transform.position, target.transform.position, ~0, path))
+                    {
+                        if (path.corners.Length > 1)
+                            movePoint = path.corners[1] + (Vector3.up * halfHeight);
+                    }
+
+                    MoveTowards(movePoint);
+                }
+            }
+            else
+            {
+                seePause = alertTime;
+                sawPlayer = true;
+            }
         }
         else
         {
+            sawPlayer = false;
             DoMovement();
         }
     }
 
     bool CanSeePlayer()
     {
+        //Debug.Log(Vector3.Distance(transform.position, target.transform.position));
+        // little hack so it moves into the player when it's super close
+        if (Vector3.Distance(target.transform.position, transform.position) < 2.0f)
+            return true;
+
         // check if the player is within the view cone
         if (GetAngleToPlayer() > viewCone)
             return false;
@@ -90,12 +122,14 @@ public class EnemyController : MonoBehaviour
         {
             if (path.corners.Length > 1)
                 movePoint = path.corners[1] + (Vector3.up * halfHeight);
+            if (Vector3.Distance(movePoint, thisPoint.position) < 1.0f)
+                movePoint = thisPoint.position;
         }
 
-        Vector3 difference = movePoint - transform.position;
+        Vector3 difference = thisPoint.position - transform.position;
         float mag = difference.magnitude;
 
-        if (mag < 0.1f)
+        if (mag < 0.15f)
         {
             pathIndex += increment;
             if (!pathLoops)
