@@ -10,6 +10,8 @@ public class EndStuff : MonoBehaviour
     public GameObject text;
     public GameObject light;
 
+    public GameObject guidance;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,7 @@ public class EndStuff : MonoBehaviour
             text.gameObject.SetActive(true);
             colliders.gameObject.SetActive(true);
             light.gameObject.SetActive(false);
+            guidance.gameObject.SetActive(false);
         }
     }
 }
