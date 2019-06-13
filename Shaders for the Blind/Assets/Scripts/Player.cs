@@ -11,6 +11,14 @@ public class Player : MonoBehaviour
 
     public Transform headTransform;
 
+    [Header("Footstep Sounds")]
+    [Tooltip("Seconds between footsteps")]
+    public float footstepInterval = 0.5f;
+    public List<AudioClip> footstepSounds;
+    public AudioSource footstepSource;
+    private float footstepCounter = 0.0f;
+    private int footstepIndex = 0;
+
     CharacterController controller;
 
     private void Awake()
@@ -35,6 +43,20 @@ public class Player : MonoBehaviour
         else
         {
             moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
+        }
+
+        if(moveInput.sqrMagnitude > 0.0f)
+        {
+            footstepCounter += Time.deltaTime;
+
+            while(footstepCounter > footstepInterval)
+            {
+                footstepCounter -= footstepInterval;
+
+                footstepSource.PlayOneShot(footstepSounds[footstepIndex]);
+
+                footstepIndex = (footstepIndex + 1) % footstepSounds.Count;
+            }
         }
 
         // get direction head is facing
