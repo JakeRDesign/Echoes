@@ -23,18 +23,11 @@ public class EchoTrigger : MonoBehaviour
 
 #if UNITY_EDITOR
     [MenuItem("Echo/Clear Echo")]
+#endif
     public static void ClearEcho()
     {
         Shader.SetGlobalFloat("_EchoRadius", 0.0f);
         Shader.SetGlobalVector("_EchoCenter", Vector3.zero);
     }
-
-    //[MenuItem("Echo/Apply Material to Everything")]
-    //public static void ApplyMaterial()
-    //{
-
-    //}
-
-#endif
 
 }

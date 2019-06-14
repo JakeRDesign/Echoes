@@ -39,6 +39,8 @@ public class Player : MonoBehaviour
         controller = GetComponent<CharacterController>();
 
         lastTrail = transform.position;
+
+        EchoTrigger.ClearEcho();
     }
 
     private void Update()
