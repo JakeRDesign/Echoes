@@ -52,7 +52,19 @@ public class EnemyController : MonoBehaviour
             if (sawPlayer)
             {
                 seePause -= Time.fixedDeltaTime;
-                if (seePause < 0)
+                if (seePause > 0)
+                {
+                    // look at player while we are paused
+
+                    Vector3 difference = target.transform.position - transform.position;
+                    // get angle from difference between current position and target
+                    float ang = Mathf.Rad2Deg * Mathf.Atan2(difference.x, difference.z);
+                    // turn that angle into a target quaternion
+                    Quaternion targetAng = Quaternion.Euler(0.0f, ang, 0.0f);
+                    // smoothly rotate between em
+                    transform.rotation = Quaternion.Lerp(transform.rotation, targetAng, Time.fixedDeltaTime * 5.0f * moveSpeed);
+                }
+                else
                 {
                     // find player
                     Vector3 movePoint = transform.position;
@@ -70,11 +82,17 @@ public class EnemyController : MonoBehaviour
             {
                 seePause = alertTime;
                 sawPlayer = true;
+                target.Noticed(this);
             }
         }
         else
         {
-            sawPlayer = false;
+            if (sawPlayer)
+            {
+                target.UnNoticed();
+                sawPlayer = false;
+                pauseTimer = 2.0f;
+            }
             DoMovement();
         }
     }

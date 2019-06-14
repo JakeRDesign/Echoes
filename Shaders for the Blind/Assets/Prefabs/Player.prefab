@@ -523,6 +523,8 @@ MonoBehaviour:
   - {fileID: 1447873094795848885, guid: c643a62a06bb60a4a80c0fe7789aef2a, type: 3}
   trailDistance: 1
   lastTrail: {x: 0, y: 0, z: 0}
+  normalBreathing: {fileID: 201547367}
+  panickedBreathing: {fileID: 1863703775}
 --- !u!143 &9074489303683204347
 CharacterController:
   m_ObjectHideFlags: 0

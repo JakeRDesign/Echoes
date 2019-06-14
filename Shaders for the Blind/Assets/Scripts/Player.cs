@@ -25,6 +25,12 @@ public class Player : MonoBehaviour
     public float trailDistance = 0.3f;
     public Vector3 lastTrail;
 
+    [Header("Breathing")]
+    public AudioSource normalBreathing;
+    public AudioSource panickedBreathing;
+    float lastPanicTime = 0.0f;
+    EnemyController lastTargeter = null;
+
     CharacterController controller;
 
     private void Awake()
@@ -37,6 +43,10 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        // make sure normal breathing starts after panicked breathing is finished
+        if(!panickedBreathing.isPlaying && !normalBreathing.isPlaying)
+            normalBreathing.Play();
+
         Vector3 moveInput = Vector3.zero;
 
         // use touchpad on android
@@ -101,8 +111,22 @@ public class Player : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    public void Noticed(EnemyController targeter)
     {
+        Debug.Log("OwO");
+
+        if (panickedBreathing.isPlaying || (Time.time - lastPanicTime < 5 && targeter == lastTargeter))
+            return;
+
+        normalBreathing.Stop();
+        panickedBreathing.Play();
+        lastPanicTime = Time.time;
+        lastTargeter = targeter;
+    }
+
+    public void UnNoticed()
+    {
+        Debug.Log("UnU");
     }
 
 }
