@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         // make sure normal breathing starts after panicked breathing is finished
-        if(!panickedBreathing.isPlaying && !normalBreathing.isPlaying)
+        if (!panickedBreathing.isPlaying && !normalBreathing.isPlaying)
             normalBreathing.Play();
 
         Vector3 moveInput = Vector3.zero;
@@ -59,10 +59,16 @@ public class Player : MonoBehaviour
                 Vector2 touchPad = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad);
                 moveInput = new Vector3(touchPad.x, 0.0f, touchPad.y);
             }
+
+            if (OVRInput.Get(OVRInput.Button.Back))
+                PauseMenu.instance.Toggle(headTransform);
         }
         else
         {
             moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
+
+            if (Input.GetKeyDown(KeyCode.Tab))
+                PauseMenu.instance.Toggle(headTransform);
         }
 
         if (moveInput.sqrMagnitude > 0.0f)

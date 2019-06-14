@@ -22,6 +22,9 @@ public class EchoSpawner : MonoBehaviour
     {
         if (Time.time - lastPulseTime < pulseCooldown)
             return;
+        // don't spawn if paused
+        if (Time.timeScale < Mathf.Epsilon)
+            return;
 
         if (lastSource != null)
             Destroy(lastSource.gameObject);
