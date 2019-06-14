@@ -1910,10 +1910,33 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.3
       objectReference: {fileID: 0}
+    - target: {fileID: 9074489303683204325, guid: 337d55b875df22e4baf1dd8995002e7d,
+        type: 3}
+      propertyPath: bloodPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9074489303683204325, guid: 337d55b875df22e4baf1dd8995002e7d,
+        type: 3}
+      propertyPath: bloodPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 4202197712532086387, guid: 96bc0bbc05cce19418aed5a064b21025,
+        type: 3}
     - target: {fileID: 9074489303569669823, guid: 337d55b875df22e4baf1dd8995002e7d,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.555
+      objectReference: {fileID: 0}
+    - target: {fileID: 201547367, guid: 337d55b875df22e4baf1dd8995002e7d, type: 3}
+      propertyPath: m_Volume
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1038889193, guid: 337d55b875df22e4baf1dd8995002e7d, type: 3}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863703775, guid: 337d55b875df22e4baf1dd8995002e7d, type: 3}
+      propertyPath: m_Volume
+      value: 0.45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 337d55b875df22e4baf1dd8995002e7d, type: 3}
