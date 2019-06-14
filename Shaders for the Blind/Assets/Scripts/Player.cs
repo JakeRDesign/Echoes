@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     [Header("Blood Trails")]
     public List<GameObject> bloodPrefabs;
     public float trailDistance = 0.3f;
-    public Vector3 lastTrail;
+    private Vector3 lastTrail;
 
     [Header("Breathing")]
     public AudioSource normalBreathing;
