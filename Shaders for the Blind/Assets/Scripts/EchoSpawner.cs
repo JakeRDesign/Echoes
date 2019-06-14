@@ -10,7 +10,7 @@ public class EchoSpawner : MonoBehaviour
     public EchoTrigger sourcePrefab;
     EchoTrigger lastSource;
 
-    float lastPulseTime = 0.0f;
+    float lastPulseTime = Mathf.NegativeInfinity;
 
     public void Update()
     {

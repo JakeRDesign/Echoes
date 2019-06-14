@@ -10,6 +10,17 @@ public class EchoTrigger : MonoBehaviour
     public float echoSpeed = 1.0f;
 
     public float echoDist = 0.0f;
+    float lastDist = 0.0f;
+
+    List<EnemyPulse> pulses;
+
+    private void Awake()
+    {
+        pulses = new List<EnemyPulse>();
+
+        foreach (var p in FindObjectsOfType<EnemyPulse>())
+            pulses.Add(p);
+    }
 
     void Update()
     {
@@ -19,6 +30,16 @@ public class EchoTrigger : MonoBehaviour
         Shader.SetGlobalFloat("_EchoRadius", echoDist);
 
         Shader.SetGlobalVector("_EchoCenter", transform.position);
+
+        foreach(var p in pulses)
+        {
+            float dist = Vector3.Distance(transform.position, p.transform.position);
+
+            if(lastDist < dist && echoDist >= dist)
+                p.Pulse();
+        }
+
+        lastDist = echoDist;
     }
 
 #if UNITY_EDITOR
