@@ -43,5 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5420fe86756a44b98d4c770e0148c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  echoAcceleration: 0.2
   echoSpeed: 10
   echoDist: 0
