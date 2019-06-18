@@ -2660,7 +2660,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.91, y: 0.59, z: 0.04}
+  m_Size: {x: 0.91, y: 0.59, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &236284921
 PrefabInstance:
@@ -4698,12 +4698,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2941824, y: 1.4259689, z: 1.2941824}
   m_Center: {x: 0, y: 0, z: -0.00000002980232}
---- !u!20 &416716344 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 9074489303568159075, guid: 337d55b875df22e4baf1dd8995002e7d,
-    type: 3}
-  m_PrefabInstance: {fileID: 9074489304006075721}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &421730218
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6734,6 +6728,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.96544, y: 3.5629086, z: 1.9695678}
   m_Center: {x: -0.000000059604645, y: 0, z: 0}
+--- !u!20 &608266732 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 9054489347904564919, guid: 337d55b875df22e4baf1dd8995002e7d,
+    type: 3}
+  m_PrefabInstance: {fileID: 9074489304006075721}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &623115099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10651,7 +10651,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 416716344}
+  m_Camera: {fileID: 608266732}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -10697,6 +10697,9 @@ MonoBehaviour:
   spawnDistance: 2
   openTime: 2
   closeTime: 0.3
+  buttonColliders:
+  - {fileID: 232121868}
+  - {fileID: 1643239411}
 --- !u!1001 &921308509
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18186,7 +18189,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.91, y: 0.59, z: 0.04}
+  m_Size: {x: 0.91, y: 0.59, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1647948931
 PrefabInstance:

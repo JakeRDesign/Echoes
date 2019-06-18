@@ -13,6 +13,9 @@ public class PauseMenu : MonoBehaviour
     public float openTime = 1.0f;
     public float closeTime = 0.3f;
 
+    [Header("Buttons")]
+    public List<BoxCollider> buttonColliders;
+
     bool isOpen = false;
 
     Vector2 openSize;
@@ -37,7 +40,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Open(Transform inFront)
     {
-        transform.position = inFront.position + (inFront.forward*spawnDistance);
+        transform.position = inFront.position + (inFront.forward * spawnDistance);
         transform.rotation = inFront.rotation;
 
         this.gameObject.SetActive(true);
@@ -63,11 +66,18 @@ public class PauseMenu : MonoBehaviour
 
     IEnumerator OpenAnimation()
     {
+
         for (float t = 0.0f; t < openTime; t += Time.unscaledDeltaTime)
         {
-            float tt = EaseOutElastic(t/openTime);
+            float tt = EaseOutElastic(t / openTime);
 
             transform.localScale = Vector3.LerpUnclamped(Vector3.zero, Vector3.one, tt);
+            // annoying hack to make raycasts detect the buttons
+            foreach (var c in buttonColliders)
+            {
+                c.enabled = false;
+                c.enabled = true;
+            }
             yield return new WaitForEndOfFrame();
         }
     }
