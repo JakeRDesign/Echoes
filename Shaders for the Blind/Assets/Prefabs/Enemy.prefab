@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c484b30f7afaf4a40a386a372238bca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 564989310997511466}
   pathPoints: []
   pathLoops: 1
   moveSpeed: 2
@@ -279,11 +280,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6593257435314517314}
     m_Modifications:
-    - target: {fileID: 2652076442313641428, guid: 6f130dc6146414f4fbfdcbe97b0e9aa1,
-        type: 3}
-      propertyPath: m_Name
-      value: EnemyMesh
-      objectReference: {fileID: 0}
     - target: {fileID: 2652076442314002932, guid: 6f130dc6146414f4fbfdcbe97b0e9aa1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -354,11 +350,22 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 2652076442313641428, guid: 6f130dc6146414f4fbfdcbe97b0e9aa1,
+        type: 3}
+      propertyPath: m_Name
+      value: EnemyMesh
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f130dc6146414f4fbfdcbe97b0e9aa1, type: 3}
 --- !u!4 &564989310989816520 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2652076442314002932, guid: 6f130dc6146414f4fbfdcbe97b0e9aa1,
+    type: 3}
+  m_PrefabInstance: {fileID: 2529105107199329084}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &564989310997511466 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2652076442323009046, guid: 6f130dc6146414f4fbfdcbe97b0e9aa1,
     type: 3}
   m_PrefabInstance: {fileID: 2529105107199329084}
   m_PrefabAsset: {fileID: 0}
