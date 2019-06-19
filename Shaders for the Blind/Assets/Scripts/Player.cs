@@ -45,6 +45,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        Shader.SetGlobalVector("_PlayerPos", transform.position);
         // make sure normal breathing starts after panicked breathing is finished
         if (!panickedBreathing.isPlaying && !normalBreathing.isPlaying)
             normalBreathing.Play();

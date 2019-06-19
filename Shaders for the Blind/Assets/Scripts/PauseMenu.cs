@@ -66,7 +66,6 @@ public class PauseMenu : MonoBehaviour
 
     IEnumerator OpenAnimation()
     {
-
         for (float t = 0.0f; t < openTime; t += Time.unscaledDeltaTime)
         {
             float tt = EaseOutElastic(t / openTime);
