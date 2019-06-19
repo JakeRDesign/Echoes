@@ -18,6 +18,7 @@ public class EnemyController : MonoBehaviour
     public List<PathPoint> pathPoints;
     public bool pathLoops = false;
     public float moveSpeed = 10.0f;
+    public float rotateSpeed = 2.0f;
     [Tooltip("Angle of view cone in radians")]
     [Range(0.0f, Mathf.PI)]
     public float viewCone = 0.1f;
@@ -207,7 +208,7 @@ public class EnemyController : MonoBehaviour
         // turn that angle into a target quaternion
         Quaternion targetAng = Quaternion.Euler(0.0f, ang, 0.0f);
         // smoothly rotate between em
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetAng, Time.fixedDeltaTime * 5.0f * moveSpeed);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetAng, Time.fixedDeltaTime * rotateSpeed);
 
         animator.SetBool("walking", true);
     }
