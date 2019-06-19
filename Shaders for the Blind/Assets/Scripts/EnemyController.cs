@@ -14,6 +14,7 @@ public struct PathPoint
 public class EnemyController : MonoBehaviour
 {
 
+    public Animator animator;
     public List<PathPoint> pathPoints;
     public bool pathLoops = false;
     public float moveSpeed = 10.0f;
@@ -63,6 +64,7 @@ public class EnemyController : MonoBehaviour
                     Quaternion targetAng = Quaternion.Euler(0.0f, ang, 0.0f);
                     // smoothly rotate between em
                     transform.rotation = Quaternion.Lerp(transform.rotation, targetAng, Time.fixedDeltaTime * 5.0f * moveSpeed);
+                    animator.SetBool("walking", false);
                 }
                 else
                 {
@@ -130,6 +132,8 @@ public class EnemyController : MonoBehaviour
         if (pauseTimer > 0.0f)
         {
             pauseTimer -= Time.fixedDeltaTime;
+
+            animator.SetBool("walking", false);
             return;
         }
 
@@ -204,6 +208,8 @@ public class EnemyController : MonoBehaviour
         Quaternion targetAng = Quaternion.Euler(0.0f, ang, 0.0f);
         // smoothly rotate between em
         transform.rotation = Quaternion.Lerp(transform.rotation, targetAng, Time.fixedDeltaTime * 5.0f * moveSpeed);
+
+        animator.SetBool("walking", true);
     }
 
 
