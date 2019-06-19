@@ -4,17 +4,27 @@ using UnityEngine;
 
 public class ControlsTrig : MonoBehaviour
 {
-    public GameObject controls;
-    public GameObject text;
+    public Animator cube;
     private bool firsttime;
+
+    public GameObject text;
+
+    private void Start()
+    {
+        cube.enabled = false;
+    }
 
     private void OnTriggerExit(Collider other)
     {
         if ((other.tag == "Player") && firsttime == false)
         {
-            controls.transform.position = controls.transform.position + new Vector3(0, 10f, 0);
-            text.transform.position = controls.transform.position + new Vector3(0, 10f, 0);
+            cube.enabled = true;
             firsttime = true;
         }
+    }
+
+    void Dis()
+    {
+        text.gameObject.SetActive(false);
     }
 }
