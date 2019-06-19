@@ -116,7 +116,7 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneTransition.ChangeToScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void Noticed(EnemyController targeter)

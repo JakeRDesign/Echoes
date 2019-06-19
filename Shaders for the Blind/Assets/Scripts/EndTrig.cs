@@ -9,7 +9,7 @@ public class EndTrig : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            SceneManager.LoadScene(2);
+            SceneTransition.ChangeToScene(2);
         }
     }
 }
