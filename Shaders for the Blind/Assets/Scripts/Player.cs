@@ -141,7 +141,9 @@ public class Player : MonoBehaviour
 
         GameObject newTrail = Instantiate(toSpawn, hit.point + Vector3.up*0.05f, transform.rotation);
 
-        // TODO: rotate based on hit normal
+        // rotate the object based on the floor underneath us
+        Transform trailTransform = newTrail.transform;
+        trailTransform.rotation = Quaternion.FromToRotation(trailTransform.up, hit.normal) * trailTransform.rotation;
 
         // lastTrail is the position that the player was at when the last one was spawned
         // kind of a bad name, but I'd rather write this long comment explaining it
