@@ -139,7 +139,7 @@ public class Player : MonoBehaviour
         if (!Physics.Raycast(transform.position, Vector3.down, out var hit))
             return;
 
-        GameObject newTrail = Instantiate(toSpawn, hit.point, transform.rotation);
+        GameObject newTrail = Instantiate(toSpawn, hit.point + Vector3.up*0.05f, transform.rotation);
 
         // TODO: rotate based on hit normal
 
@@ -181,17 +181,20 @@ public class Player : MonoBehaviour
         // disable character controller so we stop moving
         controller.enabled = false;
 
+        // reset the scene, with a delay to wait for the sound effect to finish
         SceneTransition.ChangeToScene(SceneManager.GetActiveScene().buildIndex, resetDelay);
         StartCoroutine(BadHack(killedBy));
     }
 
+    // awful hack to make the enemy get out of your face a little while after the fade starts
+    // just move it into the ground after it kills you lmao
     IEnumerator BadHack(EnemyController toMove)
     {
         const float moveTime = 1.0f;
 
         for(float t = 0.0f; t < moveTime; t += Time.fixedUnscaledDeltaTime)
         {
-            toMove.transform.position -= Vector3.up * Time.fixedUnscaledDeltaTime * 2.0f;
+            toMove.transform.position -= Vector3.up * Time.fixedUnscaledDeltaTime * 1.0f;
 
             if (t / moveTime > 0.4f)
                 toMove.enabled = false;
