@@ -2280,6 +2280,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.3
       objectReference: {fileID: 0}
+    - target: {fileID: 9074489303683204324, guid: 337d55b875df22e4baf1dd8995002e7d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9074489303683204325, guid: 337d55b875df22e4baf1dd8995002e7d,
         type: 3}
       propertyPath: bloodPrefabs.Array.size
