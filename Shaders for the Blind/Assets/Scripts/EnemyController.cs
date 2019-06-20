@@ -47,7 +47,6 @@ public class EnemyController : MonoBehaviour
 
     private void FixedUpdate()
     {
-
         transform.localScale = Vector3.one;
         if (CanSeePlayer())
         {

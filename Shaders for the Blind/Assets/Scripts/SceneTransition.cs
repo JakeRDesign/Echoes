@@ -21,22 +21,29 @@ public class SceneTransition : MonoBehaviour
         }
         instance = this;
         DontDestroyOnLoad(this.gameObject);
+
+        SceneManager.sceneLoaded += ReAttachCanvas;
     }
 
-    public static void ChangeToScene(int index)
+    private void ReAttachCanvas(Scene scene, LoadSceneMode loadSceneMode)
+    {
+        GetComponent<Canvas>().worldCamera = Camera.main;
+    }
+
+    public static void ChangeToScene(int index, float pauseTime = 0.0f)
     {
         if (instance == null)
             SceneManager.LoadScene(index);
         else
-            instance.StartFade(index);
+            instance.StartFade(index, pauseTime);
     }
 
-    public void StartFade(int index)
+    public void StartFade(int index, float pauseTime)
     {
-        StartCoroutine(FadeAnimation(index));
+        StartCoroutine(FadeAnimation(index, pauseTime));
     }
 
-    IEnumerator FadeAnimation(int index)
+    IEnumerator FadeAnimation(int index, float pauseTime)
     {
         overlayImage.gameObject.SetActive(true);
         overlayImage.enabled = true;
@@ -56,8 +63,15 @@ public class SceneTransition : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
 
-        // chance scene
-        SceneManager.LoadScene(index);
+        // pause if needed
+        for(float t = 0.0f; t < pauseTime; t += Time.fixedUnscaledDeltaTime)
+            yield return new WaitForFixedUpdate();
+
+        // change scene
+        var loading = SceneManager.LoadSceneAsync(index);
+        // wait for it to finish loading, hopefully this stops any lagginess
+        while(!loading.isDone)
+            yield return new WaitForEndOfFrame();
 
         // fade out
         for (float t = 0.0f; t < fadeTime; t += Time.fixedUnscaledDeltaTime)
@@ -68,5 +82,6 @@ public class SceneTransition : MonoBehaviour
 
         overlayImage.gameObject.SetActive(false);
     }
+
 
 }

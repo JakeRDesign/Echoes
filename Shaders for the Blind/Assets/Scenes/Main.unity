@@ -24747,10 +24747,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9074489303683204325, guid: 337d55b875df22e4baf1dd8995002e7d,
+    - target: {fileID: 9074489303683204324, guid: 337d55b875df22e4baf1dd8995002e7d,
         type: 3}
-      propertyPath: moveSpeed
-      value: 125
+      propertyPath: spawnOnAwake
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 337d55b875df22e4baf1dd8995002e7d, type: 3}

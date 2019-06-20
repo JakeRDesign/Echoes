@@ -673,7 +673,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9074489303683204322}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -745,7 +745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71673f60c2561044183ef58fa8696ff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 100
+  moveSpeed: 125
   goController: {fileID: 9074489303061094174}
   headTransform: {fileID: 9074489303569669817}
   footstepInterval: 1
@@ -761,6 +761,8 @@ MonoBehaviour:
   trailDistance: 1
   normalBreathing: {fileID: 201547367}
   panickedBreathing: {fileID: 1863703775}
+  deathSound: {fileID: 8300000, guid: 45e8ce515c097954893936da348314fd, type: 3}
+  resetDelay: 5
 --- !u!143 &9074489303683204347
 CharacterController:
   m_ObjectHideFlags: 0

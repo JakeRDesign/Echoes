@@ -12,6 +12,17 @@ public class EchoSpawner : MonoBehaviour
 
     float lastPulseTime = Mathf.NegativeInfinity;
 
+    public bool spawnOnAwake = false;
+
+    private void Start()
+    {
+        if (spawnOnAwake)
+        {
+            // perform an echo when game starts
+            SpawnSource();
+        }
+    }
+
     public void Update()
     {
         if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) || Input.GetKeyDown(KeyCode.Space))
